@@ -75,6 +75,7 @@ export function AlertSettings({ alerts, onUpdate, onDelete }: AlertSettingsProps
                 <div className="flex items-center space-x-2">
                   <Mail className="h-4 w-4 text-blue-500" />
                   <span className="text-sm">Email</span>
+                  {/* Switch component without size prop - fixed for Vercel deployment */}
                   <Switch
                     checked={alert.emailEnabled}
                     onCheckedChange={(checked) => onUpdate(alert.id, { emailEnabled: checked })}
@@ -83,6 +84,7 @@ export function AlertSettings({ alerts, onUpdate, onDelete }: AlertSettingsProps
                 <div className="flex items-center space-x-2">
                   <Globe className="h-4 w-4 text-green-500" />
                   <span className="text-sm">Webhook</span>
+                  {/* Switch component without size prop - fixed for Vercel deployment */}
                   <Switch
                     checked={alert.webhookEnabled}
                     onCheckedChange={(checked) => onUpdate(alert.id, { webhookEnabled: checked })}
