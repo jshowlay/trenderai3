@@ -3,7 +3,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
 interface TrendComparisonProps {
   trends: Array<{ id: string; name: string; category: string; }>;
@@ -56,18 +55,46 @@ export function TrendComparison({ trends, selectedTrends, onSelectionChange }: T
           </div>
         </div>
 
-        {/* Comparison Chart */}
-        <div className="h-64">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={comparisonData}>
-              <XAxis dataKey="name" />
-              <YAxis domain={[0, 100]} />
-              <Tooltip />
-              <Bar dataKey="aiAgents" fill="#e5c35a" name="AI Agents" />
-              <Bar dataKey="quantum" fill="#3b82f6" name="Quantum Computing" />
-              <Bar dataKey="climate" fill="#10b981" name="Climate Tech" />
-            </BarChart>
-          </ResponsiveContainer>
+        {/* Comparison Table */}
+        <div className="space-y-4">
+          <div className="grid grid-cols-4 gap-4 text-sm font-medium text-gray-600">
+            <div>Signal</div>
+            <div className="text-center">AI Agents</div>
+            <div className="text-center">Quantum</div>
+            <div className="text-center">Climate</div>
+          </div>
+          {comparisonData.map((item) => (
+            <div key={item.name} className="grid grid-cols-4 gap-4 items-center">
+              <div className="text-sm font-medium">{item.name}</div>
+              <div className="text-center">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-yellow-500 h-2 rounded-full" 
+                    style={{ width: `${item.aiAgents}%` }}
+                  ></div>
+                </div>
+                <span className="text-xs text-gray-600">{item.aiAgents}</span>
+              </div>
+              <div className="text-center">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-blue-500 h-2 rounded-full" 
+                    style={{ width: `${item.quantum}%` }}
+                  ></div>
+                </div>
+                <span className="text-xs text-gray-600">{item.quantum}</span>
+              </div>
+              <div className="text-center">
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-green-500 h-2 rounded-full" 
+                    style={{ width: `${item.climate}%` }}
+                  ></div>
+                </div>
+                <span className="text-xs text-gray-600">{item.climate}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
