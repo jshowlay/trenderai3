@@ -38,10 +38,6 @@ export function SignalExplainer({ signal, explanation }: SignalExplainerProps) {
           <Progress 
             value={signal.value} 
             className="h-2"
-            style={{ 
-              // @ts-ignore
-              '--progress-foreground': signal.color 
-            }}
           />
           
           <p className="text-xs text-gray-600">{explanation}</p>
