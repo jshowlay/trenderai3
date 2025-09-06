@@ -78,7 +78,6 @@ export function AlertSettings({ alerts, onUpdate, onDelete }: AlertSettingsProps
                   <Switch
                     checked={alert.emailEnabled}
                     onCheckedChange={(checked) => onUpdate(alert.id, { emailEnabled: checked })}
-                    size="sm"
                   />
                 </div>
                 <div className="flex items-center space-x-2">
@@ -87,7 +86,6 @@ export function AlertSettings({ alerts, onUpdate, onDelete }: AlertSettingsProps
                   <Switch
                     checked={alert.webhookEnabled}
                     onCheckedChange={(checked) => onUpdate(alert.id, { webhookEnabled: checked })}
-                    size="sm"
                   />
                 </div>
               </div>
